@@ -7,6 +7,7 @@ class ActorCritic(torch.nn.Module):
         super(ActorCritic, self).__init__()
         self.gamma = gamma
         self.entropy_scale = entropy_scale
+        self.tau = tau
 
         self.conv1 = torch.nn.Conv2d(
             state_size[0], 32, kernel_size=3, stride=2, padding=1
@@ -16,6 +17,7 @@ class ActorCritic(torch.nn.Module):
         self.conv4 = torch.nn.Conv2d(32, 32, kernel_size=3, stride=2, padding=1)
 
         self.conv_shape = self._calculate_conv_shape(state_size)
+        # print("Conv shape:", self.conv_shape)
 
         self.gru = torch.nn.GRUCell(self.conv_shape, 256)
         self.pi = torch.nn.Linear(256, n_actions)
@@ -33,19 +35,19 @@ class ActorCritic(torch.nn.Module):
         x = torch.nn.functional.elu(self.conv2(x))
         x = torch.nn.functional.elu(self.conv3(x))
         x = torch.nn.functional.elu(self.conv4(x))
-        x = x.view(x.size(0), -1)
+        x = x.view(-1, self.conv_shape)
 
         hidden_state = self.gru(x, (hidden_state))
 
         pi = self.pi(hidden_state)
         v = self.v(hidden_state)
 
-        probs = torch.nn.functional.softmax(pi, dim=-1)
+        probs = torch.nn.functional.softmax(pi, dim=1)
         dist = torch.distributions.Categorical(probs)  # discrete action space
         action = dist.sample()
         log_prob = dist.log_prob(action)
 
-        return action.numpy()[0], log_prob, v, hidden_state
+        return action.numpy()[0], v, log_prob, hidden_state
 
     def _calculate_returns(self, rewards, values, done):
         values = torch.cat(values).squeeze()
@@ -81,9 +83,10 @@ class ActorCritic(torch.nn.Module):
             torch.zeros(1, 1)
             if done
             else self.forward(
-                torch.tensor([next_state], dtype=torch.float), hidden_state
+                torch.tensor(np.array(next_state), dtype=torch.float), hidden_state
             )[1]
         )
+
         values.append(next_value.detach())  # detach to prevent backpropagation
 
         values = torch.cat(values).squeeze()
@@ -107,5 +110,5 @@ if __name__ == "__main__":
     model = ActorCritic(state_size, n_actions)
     x = torch.randn(1, *state_size)
     hidden_state = torch.zeros(1, 256)
-    action, log_prob, v, hidden_state = model(x, hidden_state)
+    action, v, log_prob, hidden_state = model(x, hidden_state)
     print(action, log_prob, v, hidden_state)
