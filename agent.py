@@ -3,7 +3,7 @@ import numpy as np
 
 
 class ActorCritic(torch.nn.Module):
-    def __init__(self, state_size, n_actions, gamma=0.99, entropy_scale=0.01, tau=0.95):
+    def __init__(self, state_size, n_actions, gamma=0.99, entropy_scale=0.01, tau=0.98):
         super(ActorCritic, self).__init__()
         self.gamma = gamma
         self.entropy_scale = entropy_scale
@@ -70,7 +70,8 @@ class ActorCritic(torch.nn.Module):
         gae = np.zeros(n_steps)
         for t in range(n_steps):
             for k in range(0, n_steps - t):
-                gae[t] += (self.gamma * self.tau) ** k * delta_t[t + k]
+                temp = (self.gamma * self.tau) ** k * delta_t[t + k]
+                gae[t] += temp
 
         return torch.tensor(gae, dtype=torch.float)
 
