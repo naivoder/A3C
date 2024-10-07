@@ -3,7 +3,7 @@ import numpy as np
 
 
 class ActorCritic(torch.nn.Module):
-    def __init__(self, state_size, n_actions, gamma=0.99, entropy_scale=0.01, tau=0.98):
+    def __init__(self, state_size, n_actions, gamma=0.99, entropy_scale=0.01, tau=0.95):
         super(ActorCritic, self).__init__()
         self.gamma = gamma
         self.entropy_scale = entropy_scale

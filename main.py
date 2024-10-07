@@ -9,8 +9,8 @@ if __name__ == "__main__":
     gloabl_ep = mp.Value("i", 0)
 
     env_id = "MsPacmanNoFrameskip-v4"
-    n_threads = 16
+    n_threads = 4
     n_actions = 6
-    input_shape = (4, 84, 84)
+    input_shape = (4, 42, 42)
 
     env = ParallelEnv(env_id, n_threads, input_shape, n_actions, gloabl_ep)
