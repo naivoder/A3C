@@ -10,7 +10,7 @@ if __name__ == "__main__":
 
     env_id = "MsPacmanNoFrameskip-v4"
     n_threads = 4
-    n_actions = 6
+    n_actions = 9  # need to change this to be dynamic
     input_shape = (4, 42, 42)
 
     env = ParallelEnv(env_id, n_threads, input_shape, n_actions, gloabl_ep)
