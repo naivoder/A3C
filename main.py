@@ -19,7 +19,7 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--n_threads",
-        default=4,
+        default=10,
         type=int,
         help="Number of parallel environments during training",
     )

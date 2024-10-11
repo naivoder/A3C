@@ -6,7 +6,7 @@ from wrappers import make_env
 import utils
 
 def worker(name, input_shape, n_actions, global_agent, optimizer, env_id):
-    T_MAX = 20
+    T_MAX = 50
     
     memory = Memory()
     local_agent = AC3(input_shape, n_actions)
