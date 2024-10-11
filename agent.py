@@ -2,9 +2,9 @@ import torch
 import numpy as np
 
 
-class ActorCritic(torch.nn.Module):
+class AC3(torch.nn.Module):
     def __init__(self, state_size, n_actions, gamma=0.99, entropy_scale=0.01, tau=0.95):
-        super(ActorCritic, self).__init__()
+        super(AC3, self).__init__()
         self.gamma = gamma
         self.entropy_scale = entropy_scale
         self.tau = tau
@@ -75,7 +75,7 @@ class ActorCritic(torch.nn.Module):
 
         return torch.tensor(gae, dtype=torch.float)
 
-    def calculate_cost(
+    def calculate_loss(
         self, next_state, hidden_state, rewards, values, log_probs, done
     ):
         returns = self._calculate_returns(rewards, values, done)

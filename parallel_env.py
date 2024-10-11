@@ -1,15 +1,15 @@
 import torch.multiprocessing as mp
-from agent import ActorCritic
+from agent import AC3
 from shared_adam import SharedAdam
 
 from worker import worker
 
 
 class ParallelEnv:
-    def __init__(self, env_id, n_threads, input_shape, n_actions, global_ep):
+    def __init__(self, env_id, n_threads, input_shape, n_actions):
         names = [str(i) for i in range(n_threads)]
 
-        global_agent = ActorCritic(input_shape, n_actions)
+        global_agent = AC3(input_shape, n_actions)
         global_agent.share_memory()  # ???
 
         optimizer = SharedAdam(global_agent.parameters(), lr=1e-4)
@@ -23,7 +23,6 @@ class ParallelEnv:
                     global_agent,
                     optimizer,
                     env_id,
-                    global_ep,
                 ),
             )
             for name in names
