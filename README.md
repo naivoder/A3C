@@ -67,8 +67,7 @@ python main.py --env 'MsPacmanNoFrameskip-v4'
 Using a Conda environment along with these flexible command-line options will help you efficiently manage your dependencies and customize the training process for your specific needs.
 
 ## Results
-
-<!-- 
+ 
 <table>
     <tr>
         <td>
@@ -86,17 +85,97 @@ Using a Conda environment along with these flexible command-line options will he
     </tr>
     <tr>
         <td>
-            <img src="metrics/AirRaidNoFrameskip-v4_metrics.png" width="250" height="250"/>
+            <img src="metrics/AirRaidNoFrameskip-v4_learning_curve.png" width="250" height="250"/>
         </td>
         <td>
-            <img src="metrics/AlienNoFrameskip-v4_metrics.png" width="250" height="250"/>
+            <img src="metrics/AlienNoFrameskip-v4_learning_curve.png" width="250" height="250"/>
         </td>
         <td>
-            <img src="metrics/AmidarNoFrameskip-v4_metrics.png" width="250" height="250"/>
+            <img src="metrics/AmidarNoFrameskip-v4_learning_curve.png" width="250" height="250"/>
         </td>
     </tr>
 </table>
--->
+<table>
+    <tr>
+        <td>
+            <p><b>Assault</b></p>
+            <img src="environments/AssaultNoFrameskip-v4.gif" width="250" height="250"/>
+        </td>
+        <td>
+            <p><b>Asterix</b></p>
+            <img src="environments/AsterixNoFrameskip-v4.gif" width="250" height="250"/>
+        </td>
+        <td>
+            <p><b>Asteroids</b></p>
+            <img src="environments/AsteroidsNoFrameskip-v4.gif" width="250" height="250"/>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img src="metrics/AssaultNoFrameskip-v4_learning_curve.png" width="250" height="250"/>
+        </td>
+        <td>
+            <img src="metrics/AsterixNoFrameskip-v4_learning_curve.png" width="250" height="250"/>
+        </td>
+        <td>
+            <img src="metrics/AsteroidsNoFrameskip-v4_learning_curve.png" width="250" height="250"/>
+        </td>
+    </tr>
+</table>
+<table>
+    <tr>
+        <td>
+            <p><b>Atlantis</b></p>
+            <img src="environments/AtlantisNoFrameskip-v4.gif" width="250" height="250"/>
+        </td>
+        <td>
+            <p><b>BankHeist</b></p>
+            <img src="environments/BankHeistNoFrameskip-v4.gif" width="250" height="250"/>
+        </td>
+        <td>
+            <p><b>BattleZone</b></p>
+            <img src="environments/BattleZoneNoFrameskip-v4.gif" width="250" height="250"/>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img src="metrics/AtlantisNoFrameskip-v4_learning_curve.png" width="250" height="250"/>
+        </td>
+        <td>
+            <img src="metrics/BankHeistNoFrameskip-v4_learning_curve.png" width="250" height="250"/>
+        </td>
+        <td>
+            <img src="metrics/BattleZoneNoFrameskip-v4_learning_curve.png" width="250" height="250"/>
+        </td>
+    </tr>
+</table>
+<table>
+    <tr>
+        <td>
+            <p><b>BeamRider</b></p>
+            <img src="environments/BeamRiderNoFrameskip-v4.gif" width="250" height="250"/>
+        </td>
+        <td>
+            <p><b>Berzerk</b></p>
+            <img src="environments/BerzerkNoFrameskip-v4.gif" width="250" height="250"/>
+        </td>
+        <!--<td>
+            <p><b>BattleZone</b></p>
+            <img src="environments/BattleZoneNoFrameskip-v4.gif" width="250" height="250"/>
+        </td>-->
+    </tr>
+    <tr>
+        <td>
+            <img src="metrics/BeamRiderNoFrameskip-v4_learning_curve.png" width="250" height="250"/>
+        </td>
+        <td>
+            <img src="metrics/BerzerkNoFrameskip-v4_learning_curve.png" width="250" height="250"/>
+        </td>
+        <!--<td>
+            <img src="metrics/BattleZoneNoFrameskip-v4_learning_curve.png" width="250" height="250"/>
+        </td>-->
+    </tr>
+</table>
 
 ## Analysis
 
