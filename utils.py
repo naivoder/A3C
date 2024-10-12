@@ -10,7 +10,7 @@ def plot_learning_curve(x, scores, figure_file):
         running_avg[i] = np.mean(scores[max(0, i - 100) : (i + 1)])
     plt.plot(x, running_avg)
     plt.title("Running Average of Previous 100 Scores")
-    plt.savefig(figure_file)
+    plt.savefig(f"metrics/{figure_file}")
 
 def save_results(env_name, metrics, agent):
     save_prefix = env_name.split("/")[-1]
