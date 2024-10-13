@@ -159,10 +159,10 @@ Using a Conda environment along with these flexible command-line options will he
             <p><b>Berzerk</b></p>
             <img src="environments/BerzerkNoFrameskip-v4.gif" width="250" height="250"/>
         </td>
-        <!--<td>
-            <p><b>BattleZone</b></p>
-            <img src="environments/BattleZoneNoFrameskip-v4.gif" width="250" height="250"/>
-        </td>-->
+        <td>
+            <p><b>Bowling</b></p>
+            <img src="environments/BowlingNoFrameskip-v4.gif" width="250" height="250"/>
+        </td>
     </tr>
     <tr>
         <td>
@@ -171,9 +171,63 @@ Using a Conda environment along with these flexible command-line options will he
         <td>
             <img src="metrics/BerzerkNoFrameskip-v4_learning_curve.png" width="250" height="250"/>
         </td>
-        <!--<td>
-            <img src="metrics/BattleZoneNoFrameskip-v4_learning_curve.png" width="250" height="250"/>
-        </td>-->
+        <td>
+            <img src="metrics/BowlingNoFrameskip-v4_learning_curve.png" width="250" height="250"/>
+        </td>
+    </tr>
+</table>
+<table>
+    <tr>
+        <td>
+            <p><b>Boxing</b></p>
+            <img src="environments/BoxingNoFrameskip-v4.gif" width="250" height="250"/>
+        </td>
+        <td>
+            <p><b>Breakout</b></p>
+            <img src="environments/BreakoutNoFrameskip-v4.gif" width="250" height="250"/>
+        </td>
+        <td>
+            <p><b>Carnival</b></p>
+            <img src="environments/CarnivalNoFrameskip-v4.gif" width="250" height="250"/>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img src="metrics/BoxingNoFrameskip-v4_learning_curve.png" width="250" height="250"/>
+        </td>
+        <td>
+            <img src="metrics/BreakoutNoFrameskip-v4_learning_curve.png" width="250" height="250"/>
+        </td>
+        <td>
+            <img src="metrics/CarnivalNoFrameskip-v4_learning_curve.png" width="250" height="250"/>
+        </td>
+    </tr>
+</table>
+<table>
+    <tr>
+        <td>
+            <p><b>Centipede</b></p>
+            <img src="environments/CentipedeNoFrameskip-v4.gif" width="250" height="250"/>
+        </td>
+        <td>
+            <p><b>ChopperCommand</b></p>
+            <img src="environments/ChopperCommandNoFrameskip-v4.gif" width="250" height="250"/>
+        </td>
+        <td>
+            <p><b>CrazyClimber</b></p>
+            <img src="environments/CrazyClimberNoFrameskip-v4.gif" width="250" height="250"/>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img src="metrics/CentipedeNoFrameskip-v4_learning_curve.png" width="250" height="250"/>
+        </td>
+        <td>
+            <img src="metrics/ChopperCommandNoFrameskip-v4_learning_curve.png" width="250" height="250"/>
+        </td>
+        <td>
+            <img src="metrics/CrazyClimberNoFrameskip-v4_learning_curve.png" width="250" height="250"/>
+        </td>
     </tr>
 </table>
 
