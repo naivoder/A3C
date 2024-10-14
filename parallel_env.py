@@ -6,7 +6,7 @@ from worker import worker
 
 
 class ParallelEnv:
-    def __init__(self, env_id, n_threads, input_shape, n_actions):
+    def __init__(self, env_id, n_threads, input_shape, n_actions, n_games):
         names = [str(i) for i in range(n_threads)]
 
         global_agent = AC3(input_shape, n_actions)
@@ -23,6 +23,7 @@ class ParallelEnv:
                     global_agent,
                     optimizer,
                     env_id,
+                    n_games
                 ),
             )
             for name in names

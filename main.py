@@ -37,7 +37,7 @@ if __name__ == "__main__":
 
     input_shape = (4, 42, 42)
 
-    mp.set_start_method("forkserver")
+    mp.set_start_method("spawn")
     if args.env:
         config_env = gym.make(args.env)
         n_actions = config_env.action_space.n
@@ -46,7 +46,7 @@ if __name__ == "__main__":
         print("Observation space:", config_env.observation_space)
         print("Action space:", config_env.action_space)
 
-        env = ParallelEnv(args.env, args.n_threads, input_shape, n_actions)
+        env = ParallelEnv(args.env, args.n_threads, input_shape, n_actions, args.n_games)
     else:
         for env_name in environments:
             args.env = env_name
@@ -57,4 +57,4 @@ if __name__ == "__main__":
             print("Observation space:", config_env.observation_space)
             print("Action space:", config_env.action_space)
 
-            env = ParallelEnv(args.env, args.n_threads, input_shape, n_actions)
+            env = ParallelEnv(args.env, args.n_threads, input_shape, n_actions, args.n_games)

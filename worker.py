@@ -5,14 +5,14 @@ from agent import AC3
 from wrappers import make_env
 import utils
 
-def worker(name, input_shape, n_actions, global_agent, optimizer, env_id):
+def worker(name, input_shape, n_actions, global_agent, optimizer, env_id, max_eps):
     T_MAX = 250
     
     memory = Memory()
     local_agent = AC3(input_shape, n_actions)
     env = make_env(env_id, [input_shape[1], input_shape[2], 1])
 
-    episode, max_eps, t_steps = 0, 1000, 0
+    episode, t_steps = 0, 0
     scores = []
     best_score = min(env.reward_range)
 
