@@ -44,28 +44,27 @@ def worker(name, input_shape, n_actions, global_agent, optimizer, env_id, max_ep
                 loss.backward()
                 torch.nn.utils.clip_grad_norm_(local_agent.parameters(), 40)
 
-                for local_param, global_param in zip(
-                    local_agent.parameters(), global_agent.parameters()
-                ):
-                    global_param._grad = local_param.grad
-                optimizer.step()
-                
-                local_agent.load_state_dict(global_agent.state_dict())
+                with torch.multiprocessing.Lock():
+                    for local_param, global_param in zip(local_agent.parameters(), global_agent.parameters()):
+                        global_param._grad = local_param.grad
+                    optimizer.step()
+                    local_agent.load_state_dict(global_agent.state_dict())
                 memory.clear()
 
         episode += 1
 
-        if name == "1":
+        if name == "0":
             scores.append(score)
             avg_score = np.mean(scores[-100:])
 
-            if avg_score > best_score and episode > 100:
-                best_score = avg_score
-                torch.save(global_agent.state_dict(), f"weights/{env_id}_best.pth")
+            if score > best_score:
+                score = avg_score
+                with torch.multiprocessing.Lock():
+                    torch.save(global_agent.state_dict(), f"weights/{env_id}_best.pth")
 
             print(f"Episode: {episode}, Score: {score:.2f}, Avg Score: {avg_score:.2f}")
 
-    if name == "1":
+    if name == "0":
         torch.save(global_agent.state_dict(), f"weights/{env_id}_final.pth")
         
         x = [i for i in range(episode)]
