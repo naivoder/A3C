@@ -13,6 +13,7 @@ class ParallelEnv:
         global_agent.share_memory()  # ???
 
         optimizer = SharedAdam(global_agent.parameters(), lr=1e-4)
+
         self.ps = [
             mp.Process(
                 target=worker,

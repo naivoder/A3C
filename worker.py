@@ -6,7 +6,7 @@ from wrappers import make_env
 import utils
 
 def worker(name, input_shape, n_actions, global_agent, optimizer, env_id, max_eps):
-    T_MAX = 250
+    T_MAX = 50
     
     memory = Memory()
     local_agent = AC3(input_shape, n_actions)
@@ -58,7 +58,7 @@ def worker(name, input_shape, n_actions, global_agent, optimizer, env_id, max_ep
             avg_score = np.mean(scores[-100:])
 
             if score > best_score:
-                score = avg_score
+                best_score = score
                 with torch.multiprocessing.Lock():
                     torch.save(global_agent.state_dict(), f"weights/{env_id}_best.pth")
 
